@@ -12,4 +12,4 @@ script = ExtResource("2_sf6su")
 maxSpeed = 5.0
 mass = 5.0
 stepFrequency = 7.0
-stepInfluence = 0.6
+stepInfluence = 0.8
