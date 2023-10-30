@@ -9,7 +9,9 @@ var velocity = Vector2(0,0)
 var stepTimer = 0
 func _process(delta):
 	var moveDirection = Vector2(0,0)
-	
+	#there is nothing to see here
+	#moveDirection.x += 1 if (Input.is_key_pressed(KEY_D) || Input.is_key_pressed(KEY_RIGHT)) else 0 -  1 if (Input.is_key_pressed(KEY_A) || Input.is_key_pressed(KEY_LEFT)) else 0
+	#moveDirection.y += 1 if (Input.is_key_pressed(KEY_S) || Input.is_key_pressed(KEY_DOWN)) else 0 -  1 if (Input.is_key_pressed(KEY_W) || Input.is_key_pressed(KEY_UP)) else 0
 	moveDirection.x += float(Input.is_key_pressed(KEY_D)) - float(Input.is_key_pressed(KEY_A))
 	moveDirection.y += float(Input.is_key_pressed(KEY_S)) - float(Input.is_key_pressed(KEY_W))
 	if(moveDirection.length() == 0):
