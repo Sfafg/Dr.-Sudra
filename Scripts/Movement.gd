@@ -8,38 +8,35 @@ extends Sprite2D
 var velocity = Vector2(0,0)
 var stepAnimationTimer = 0
 func _process(delta):
-	
-	# Get Keyboard Input.
+	# Pobieranie wejścia z klawiatury.
 	var moveDirection = Vector2(0,0)
 	moveDirection.x += float(Input.is_key_pressed(KEY_D) || Input.is_key_pressed(KEY_RIGHT)) - float(Input.is_key_pressed(KEY_A) || Input.is_key_pressed(KEY_LEFT))
 	moveDirection.y += float(Input.is_key_pressed(KEY_S) || Input.is_key_pressed(KEY_DOWN)) - float(Input.is_key_pressed(KEY_W) || Input.is_key_pressed(KEY_UP))
 	
-	# If not moving restart step animation.
+	# Jeśli obiekt sie nie porusza, to zrestartuj animację kroku.
 	if(moveDirection.length() == 0):
 		stepAnimationTimer = 0
 	else:
 		moveDirection = moveDirection.normalized()
 	
-	# Calculate step animation based on sin function and clamp it between 1 - stepInfluence and 1
+	# Obliczanie animacji kroku na podstawie funkcji sinus i ograniczenie jej od 1 - stepInfluence do 1.
 	var stepAnimation = sin(stepAnimationTimer * stepFrequency) * 0.5 + 0.5
 	stepAnimation = clamp(stepAnimation + 1 - stepAnimationInfluence, 1 - stepAnimationInfluence, 1)
 	stepAnimationTimer += delta
 	
-	# Calculate velocity that we want the sprite to move at.
+	# Obliczanie prędkości, którą ma osiągnąć objekt.
 	var targetVelocity = moveDirection * maxSpeed
 	targetVelocity *= stepAnimation
 	
-	# Force to steer toward target velocity.
+	# Siła potrzebna do skierowania postaci w kierunku targetVelocity.
 	var steeringForce = targetVelocity - velocity
 
-	# Integrate acceleration.
+	# Integracja przyspieszenia.
 	velocity += steeringForce / mass * delta * 60
 	velocity.limit_length(maxSpeed)
 	
-	# Make the character face where it is going.
+	# Spraw by obiekt był skierowany w stronę kierunku ruchu.
 	self.scale.x = -abs(self.scale.x) if velocity.x <= 0 else abs(self.scale.x)
 	
-	# Integrate velocity.
+	# Integracja prędkości.
 	self.position += velocity * delta * 60
-	
-	pass
