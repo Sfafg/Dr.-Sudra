@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgsbioygoi831"]
+
+[ext_resource type="Texture2D" uid="uid://2p0g6ccif46g" path="res://PlaceholderArt/Character.png" id="1_quc5w"]
+[ext_resource type="Script" path="res://Movement.gd" id="2_fn188"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(428, 259)
+texture = ExtResource("1_quc5w")
+script = ExtResource("2_fn188")
+maxSpeed = 10.0
+mass = 10.0
