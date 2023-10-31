@@ -13,16 +13,17 @@ func _process(delta):
 	moveDirection.x += float(Input.is_key_pressed(KEY_D) || Input.is_key_pressed(KEY_RIGHT)) - float(Input.is_key_pressed(KEY_A) || Input.is_key_pressed(KEY_LEFT))
 	moveDirection.y += float(Input.is_key_pressed(KEY_S) || Input.is_key_pressed(KEY_DOWN)) - float(Input.is_key_pressed(KEY_W) || Input.is_key_pressed(KEY_UP))
 	
-	# Jeśli obiekt sie nie porusza, to zrestartuj animację kroku.
-	if(moveDirection.length() == 0):
+	# Jeśli gracz nie wysyła zadnego inputu,
+	# to zrestartuj animację kroku oraz oraz jej nie używaj.
+	var stepAnimation = 1
+	if(moveDirection.x == 0 && moveDirection.y == 0):
 		stepAnimationTimer = 0
 	else:
+		# Obliczanie animacji kroku na podstawie funkcji sinus i ograniczenie jej od 1 - stepInfluence do 1.
+		stepAnimation = sin(stepAnimationTimer * stepFrequency) * 0.5 + 0.5
+		stepAnimation = clamp(stepAnimation + 1 - stepAnimationInfluence, 1 - stepAnimationInfluence, 1)
+		stepAnimationTimer += delta
 		moveDirection = moveDirection.normalized()
-	
-	# Obliczanie animacji kroku na podstawie funkcji sinus i ograniczenie jej od 1 - stepInfluence do 1.
-	var stepAnimation = sin(stepAnimationTimer * stepFrequency) * 0.5 + 0.5
-	stepAnimation = clamp(stepAnimation + 1 - stepAnimationInfluence, 1 - stepAnimationInfluence, 1)
-	stepAnimationTimer += delta
 	
 	# Obliczanie prędkości, którą ma osiągnąć objekt.
 	var targetVelocity = moveDirection * maxSpeed
