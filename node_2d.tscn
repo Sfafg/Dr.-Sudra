@@ -1,22 +1,39 @@
 [gd_scene load_steps=7 format=3 uid="uid://6c4q4286d1ko"]
 
+[ext_resource type="Script" path="res://Scripts/Transition.gd" id="1_3njx8"]
 [ext_resource type="Texture2D" uid="uid://2p0g6ccif46g" path="res://PlaceholderArt/Character.png" id="1_quc5w"]
 [ext_resource type="Script" path="res://Scripts/Movement.gd" id="2_sf6su"]
-[ext_resource type="Script" path="res://Scripts/Gamba.gd" id="3_ul3he"]
-[ext_resource type="Resource" uid="uid://ba2vhpeyqpce4" path="res://Items/Item_Common.tres" id="5_rhwmm"]
-[ext_resource type="Resource" uid="uid://cv0qtnmvxq7sn" path="res://Items/Item_Rare.tres" id="6_0nip1"]
-[ext_resource type="Resource" uid="uid://eh64r4a0di67" path="res://Items/Item_Uncommon.tres" id="7_isfbg"]
+[ext_resource type="Script" path="res://Gamba.gd" id="4_d3gnc"]
+[ext_resource type="PackedScene" uid="uid://jse80p8vnkwl" path="res://Scenes/Politechnika.tscn" id="5_bvpqb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3woe4"]
+size = Vector2(27.4776, 31)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_3njx8")
+
+[node name="Politechnika" parent="." instance=ExtResource("5_bvpqb")]
+position = Vector2(-11, -2)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(428, 259)
+position = Vector2(423, 524)
 texture = ExtResource("1_quc5w")
 script = ExtResource("2_sf6su")
-maxSpeed = 7.0
-mass = 5.0
-stepAnimationInfluence = 0.7
 
 [node name="Gamba" type="Node" parent="."]
-script = ExtResource("3_ul3he")
-items_array = Array[Resource]([ExtResource("5_rhwmm"), ExtResource("6_0nip1"), ExtResource("7_isfbg")])
+script = ExtResource("4_d3gnc")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(500, 500)
+scale = Vector2(1.01901, 1)
+script = ExtResource("2_sf6su")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(1.46673, 1.12769)
+texture = ExtResource("1_quc5w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_3woe4")
+
+[connection signal="player_entered" from="Politechnika" to="." method="_on_politechnika_player_entered"]

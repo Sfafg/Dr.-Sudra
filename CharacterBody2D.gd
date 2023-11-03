@@ -1,11 +1,11 @@
-extends CharacterBody2D
+extends Sprite2D
 
 @export var maxSpeed : float = 2
 @export var mass : float = 2
 @export var stepFrequency : float = 10
 @export_range(0.0,1.0) var stepAnimationInfluence : float = 0.4
 
-
+var velocity = Vector2(0,0)
 var stepAnimationTimer = 0
 func _process(delta):
 	# Pobieranie wejścia z klawiatury.
@@ -38,3 +38,4 @@ func _process(delta):
 	
 	# Integracja prędkości.
 	self.position += velocity * delta * 60
+
