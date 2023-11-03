@@ -9,10 +9,7 @@ var velocity = Vector2(0,0)
 var stepAnimationTimer = 0
 func _process(delta):
 	# Pobieranie wejścia z klawiatury.
-	var moveDirection = Vector2(0,0)
-	moveDirection.x += float(Input.is_key_pressed(KEY_D) || Input.is_key_pressed(KEY_RIGHT)) - float(Input.is_key_pressed(KEY_A) || Input.is_key_pressed(KEY_LEFT))
-	moveDirection.y += float(Input.is_key_pressed(KEY_S) || Input.is_key_pressed(KEY_DOWN)) - float(Input.is_key_pressed(KEY_W) || Input.is_key_pressed(KEY_UP))
-	
+	var moveDirection = Input.get_vector("left", "right", "up", "down")
 	# Jeśli gracz nie wysyła zadnego inputu,
 	# to zrestartuj animację kroku oraz oraz jej nie używaj.
 	var stepAnimation = 1
