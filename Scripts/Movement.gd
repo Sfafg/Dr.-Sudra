@@ -27,7 +27,7 @@ func _process(delta):
 	
 	# Obliczanie prędkości, którą ma osiągnąć objekt.
 	var targetVelocity = moveDirection * maxSpeed
-	targetVelocity *= stepAnimation
+	#targetVelocity *= stepAnimation
 	
 	# Siła potrzebna do skierowania postaci w kierunku targetVelocity.
 	var steeringForce = targetVelocity - velocity
