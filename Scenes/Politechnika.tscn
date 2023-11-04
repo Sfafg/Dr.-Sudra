@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://jse80p8vnkwl"]
 
 [ext_resource type="Texture2D" uid="uid://51w4jgvicuvq" path="res://PlaceholderArt/Politechnika.jpg" id="1_bw20r"]
-[ext_resource type="Script" path="res://Scenes/Politechnika.gd" id="1_e3twg"]
+[ext_resource type="Script" path="res://Scripts/Politechnika.gd" id="1_shgm8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n1bpk"]
 size = Vector2(66, 92)
 
 [node name="Politechnika" type="StaticBody2D"]
 position = Vector2(-7, -1)
-script = ExtResource("1_e3twg")
+script = ExtResource("1_shgm8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(580, 323)
