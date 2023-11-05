@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Politechnika.gd" id="1_shgm8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n1bpk"]
-size = Vector2(66, 92)
+size = Vector2(54, 88)
 
 [node name="Politechnika" type="StaticBody2D"]
 position = Vector2(-7, -1)
@@ -22,7 +22,7 @@ polygon = PackedVector2Array(388, 397, 390, 478, 475, 484, 515, 472, 998, 443, 1
 position = Vector2(0, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(357, 438)
+position = Vector2(358, 440)
 shape = SubResource("RectangleShape2D_n1bpk")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

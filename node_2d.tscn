@@ -10,6 +10,7 @@
 script = ExtResource("1_3njx8")
 
 [node name="Politechnika" parent="." instance=ExtResource("5_bvpqb")]
+position = Vector2(-9, -1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(424, 525)
@@ -20,3 +21,5 @@ script = ExtResource("4_d3gnc")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("5_rikmo")]
 position = Vector2(501, 532)
+
+[connection signal="player_entered" from="Politechnika" to="." method="_on_politechnika_player_entered"]
