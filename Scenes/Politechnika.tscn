@@ -10,6 +10,13 @@ size = Vector2(54, 88)
 position = Vector2(-7, -1)
 script = ExtResource("1_shgm8")
 
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(358, 440)
+shape = SubResource("RectangleShape2D_n1bpk")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(580, 323)
 scale = Vector2(0.716562, 0.715517)
@@ -17,12 +24,5 @@ texture = ExtResource("1_bw20r")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(388, 397, 390, 478, 475, 484, 515, 472, 998, 443, 1104, 437, 1148, 432, 1157, 430, 1158, -5, 2, -5, 8, 471, 154, 477, 328, 471, 323, 396)
-
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(0, 4)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(358, 440)
-shape = SubResource("RectangleShape2D_n1bpk")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bgwqb15upw10h"]
+
+[node name="Transition" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 670.0
+offset_top = 556.0
+offset_right = 794.0
+offset_bottom = 595.0
+text = "Ładowanie..."
