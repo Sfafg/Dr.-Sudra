@@ -1,23 +1,20 @@
-extends Node2D
-var current_scene_node;
+extends Node
+
+var current_scene = null;
 
 func _ready():
-	current_scene_node = get_node("CurrentScene")
+	var root = get_tree().root
+	current_scene = root.get_child(root.get_child_count() - 1)
 
 	
-func _on_politechnika_player_entered():
-	_load_scene("res://Scenes/Transition.tscn")
+func load_scene(scene_path:String):
+	call_deferred("_diferred_load_scene", scene_path)
 
 
-func _load_scene(scene_path:String):
-	# Remove the current level
-	if(current_scene_node == null):
-		return
-		
-	remove_child(current_scene_node)
-	current_scene_node.call_deferred("free")
-#
-#	# Add the next level
-	var next_scene = load(scene_path).instantiate()
-	next_scene.name = "CurrentScene"
-	add_child(next_scene)
+func _diferred_load_scene(scene_path:String):
+	current_scene.free()
+	
+	current_scene = load(scene_path).instantiate()
+	
+	get_tree().root.add_child(current_scene)
+	get_tree().current_scene = current_scene

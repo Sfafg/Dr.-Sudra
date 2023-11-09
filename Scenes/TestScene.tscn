@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dliyyqiewyctv"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 123.0
+offset_top = 228.0
+offset_right = 700.0
+offset_bottom = 393.0
+theme_override_font_sizes/normal_font_size = 120
+text = "YOU LOSE"
+fit_content = true
+autowrap_mode = 0
+tab_size = 7

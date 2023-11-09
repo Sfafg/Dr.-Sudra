@@ -13,7 +13,6 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	# Skierowanie obiektu w strone ruchu.
-	
 	if velocity.x != 0 and (velocity.x > 0 != is_going_right):
 		is_going_right = velocity.x > 0
 		scale.x = -1

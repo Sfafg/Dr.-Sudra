@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://y4fkqbk88twm"]
+
+[ext_resource type="Script" path="res://Scripts/Movement.gd" id="1_3b2fy"]
+[ext_resource type="Texture2D" uid="uid://2p0g6ccif46g" path="res://PlaceholderArt/Character.png" id="2_6sdev"]
+[ext_resource type="Script" path="res://Scripts/Politechnika.gd" id="3_2xv3o"]
+[ext_resource type="Texture2D" uid="uid://51w4jgvicuvq" path="res://PlaceholderArt/Politechnika.jpg" id="4_3am7o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kx1w7"]
+size = Vector2(18.698, 27.4899)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1bpk"]
+size = Vector2(54, 88)
+
+[node name="MainScene" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+z_index = 1
+position = Vector2(715, 567)
+scale = Vector2(1.01901, 1)
+script = ExtResource("1_3b2fy")
+speed = 4.5
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(1.46673, 1.12769)
+texture = ExtResource("2_6sdev")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+scale = Vector2(1.46673, 1.12769)
+shape = SubResource("RectangleShape2D_kx1w7")
+
+[node name="Politechnika" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-7, -1)
+script = ExtResource("3_2xv3o")
+
+[node name="Area2D" type="Area2D" parent="Politechnika"]
+position = Vector2(0, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Politechnika/Area2D"]
+position = Vector2(358, 440)
+shape = SubResource("RectangleShape2D_n1bpk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Politechnika"]
+position = Vector2(580, 323)
+scale = Vector2(0.716562, 0.715517)
+texture = ExtResource("4_3am7o")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Politechnika"]
+polygon = PackedVector2Array(388, 397, 390, 478, 475, 484, 515, 472, 998, 443, 1104, 437, 1148, 432, 1157, 430, 1158, -5, 2, -5, 8, 471, 154, 477, 328, 471, 323, 396)
+
+[connection signal="body_entered" from="Politechnika/Area2D" to="Politechnika" method="_on_area_2d_body_entered" flags=18]
