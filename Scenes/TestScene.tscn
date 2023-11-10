@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dliyyqiewyctv"]
+[gd_scene load_steps=8 format=3 uid="uid://dliyyqiewyctv"]
 
 [ext_resource type="Script" path="res://Scripts/Movement.gd" id="1_72x7h"]
 [ext_resource type="Texture2D" uid="uid://2p0g6ccif46g" path="res://PlaceholderArt/Character.png" id="2_qv1ff"]
-[ext_resource type="PackedScene" uid="uid://n53p5ca4fq8p" path="res://Prefabs/banan.tscn" id="3_j0ojj"]
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="3_5tsm1"]
+[ext_resource type="Texture2D" uid="uid://dpc0aawryfgpw" path="res://PlaceholderArt/Enemy.png" id="4_61w3r"]
 [ext_resource type="Texture2D" uid="uid://dgspwpaoea3qa" path="res://PlaceholderArt/Wall.png" id="5_k4qdf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cx4dn"]
@@ -29,8 +30,23 @@ texture = ExtResource("2_qv1ff")
 scale = Vector2(1.46673, 1.12769)
 shape = SubResource("RectangleShape2D_cx4dn")
 
-[node name="Banan" parent="." instance=ExtResource("3_j0ojj")]
-position = Vector2(50, 50)
+[node name="Enemy" type="CharacterBody2D" parent="."]
+z_index = 1
+position = Vector2(336, 330)
+scale = Vector2(1.03838, 1)
+collision_layer = 2
+script = ExtResource("3_5tsm1")
+
+[node name="RayCast2D" type="RayCast2D" parent="Enemy"]
+target_position = Vector2(300, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+scale = Vector2(1.46673, 1.12769)
+texture = ExtResource("4_61w3r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+scale = Vector2(1.46673, 1.12769)
+shape = SubResource("RectangleShape2D_cx4dn")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(542, 465)
