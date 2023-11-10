@@ -1,32 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://y4fkqbk88twm"]
+[gd_scene load_steps=5 format=3 uid="uid://y4fkqbk88twm"]
 
-[ext_resource type="Script" path="res://Scripts/Movement.gd" id="1_3b2fy"]
-[ext_resource type="Texture2D" uid="uid://2p0g6ccif46g" path="res://PlaceholderArt/Character.png" id="2_6sdev"]
+[ext_resource type="PackedScene" uid="uid://bo4ipip6v4587" path="res://Prefabs/player.tscn" id="1_k1bdw"]
 [ext_resource type="Script" path="res://Scripts/Politechnika.gd" id="3_2xv3o"]
 [ext_resource type="Texture2D" uid="uid://51w4jgvicuvq" path="res://PlaceholderArt/Politechnika.jpg" id="4_3am7o"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kx1w7"]
-size = Vector2(18.698, 27.4899)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n1bpk"]
 size = Vector2(54, 88)
 
 [node name="MainScene" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="."]
-z_index = 1
-position = Vector2(715, 567)
-scale = Vector2(1.01901, 1)
-script = ExtResource("1_3b2fy")
-speed = 4.5
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-scale = Vector2(1.46673, 1.12769)
-texture = ExtResource("2_6sdev")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-scale = Vector2(1.46673, 1.12769)
-shape = SubResource("RectangleShape2D_kx1w7")
+[node name="Player" parent="." instance=ExtResource("1_k1bdw")]
 
 [node name="Politechnika" type="StaticBody2D" parent="."]
 unique_name_in_owner = true
