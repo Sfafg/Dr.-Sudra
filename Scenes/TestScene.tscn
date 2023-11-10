@@ -1,58 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://dliyyqiewyctv"]
+[gd_scene load_steps=5 format=3 uid="uid://dliyyqiewyctv"]
 
-[ext_resource type="Script" path="res://Scripts/Movement.gd" id="1_72x7h"]
-[ext_resource type="Texture2D" uid="uid://2p0g6ccif46g" path="res://PlaceholderArt/Character.png" id="2_qv1ff"]
-[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="3_5tsm1"]
-[ext_resource type="Texture2D" uid="uid://dpc0aawryfgpw" path="res://PlaceholderArt/Enemy.png" id="4_61w3r"]
+[ext_resource type="PackedScene" uid="uid://bo4ipip6v4587" path="res://Prefabs/player.tscn" id="1_7tbj0"]
+[ext_resource type="PackedScene" uid="uid://8v3gpiwe11f6" path="res://Prefabs/enemy.tscn" id="2_6j7a6"]
 [ext_resource type="Texture2D" uid="uid://dgspwpaoea3qa" path="res://PlaceholderArt/Wall.png" id="5_k4qdf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cx4dn"]
-size = Vector2(18.698, 27.4899)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yygqg"]
-size = Vector2(32.05, 30.555)
+size = Vector2(32.05, 32.7775)
 
 [node name="TestScene" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="."]
-z_index = 1
-position = Vector2(710, 566)
-scale = Vector2(1.01901, 1)
-collision_mask = 3
-script = ExtResource("1_72x7h")
-speed = 4.5
+[node name="Player" parent="." instance=ExtResource("1_7tbj0")]
+position = Vector2(720, 530)
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-scale = Vector2(1.46673, 1.12769)
-texture = ExtResource("2_qv1ff")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-scale = Vector2(1.46673, 1.12769)
-shape = SubResource("RectangleShape2D_cx4dn")
-
-[node name="Enemy" type="CharacterBody2D" parent="."]
-z_index = 1
-position = Vector2(336, 330)
-scale = Vector2(1.03838, 1)
-collision_layer = 2
-script = ExtResource("3_5tsm1")
-
-[node name="RayCast2D" type="RayCast2D" parent="Enemy"]
-target_position = Vector2(300, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
-scale = Vector2(1.46673, 1.12769)
-texture = ExtResource("4_61w3r")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-scale = Vector2(1.46673, 1.12769)
-shape = SubResource("RectangleShape2D_cx4dn")
+[node name="Enemy" parent="." instance=ExtResource("2_6j7a6")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(542, 465)
 scale = Vector2(5, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -1.11125)
 shape = SubResource("RectangleShape2D_yygqg")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]

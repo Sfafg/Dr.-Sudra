@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://j7lpoefpyuf6"]
+
+[ext_resource type="Script" path="res://Scripts/Movement.gd" id="1_klwoo"]
+[ext_resource type="Texture2D" uid="uid://c6xa4kejlfim8" path="res://PlaceholderArt/zak.png" id="2_h6vku"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cx4dn"]
+size = Vector2(39.5437, 23.056)
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 1
+position = Vector2(710, 566)
+collision_mask = 3
+script = ExtResource("1_klwoo")
+speed = 4.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.155, 0.119)
+texture = ExtResource("2_h6vku")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.90662, 3)
+scale = Vector2(1.46673, 1.12769)
+shape = SubResource("RectangleShape2D_cx4dn")
