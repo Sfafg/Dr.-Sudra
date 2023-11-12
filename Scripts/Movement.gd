@@ -16,3 +16,4 @@ func _physics_process(delta):
 	if velocity.x != 0 and (velocity.x > 0 != is_going_right):
 		is_going_right = velocity.x > 0
 		scale.x = -abs(scale.x)
+			

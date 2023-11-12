@@ -1,9 +1,12 @@
 extends CharacterBody2D
 
-enum State{IDLE = 1, ATTACK = 2}
+enum State{IDLE = 1, ATTACK = 2, FLEE = 3}
 var current_state = State.IDLE
+var health = Health.new(100, 100, func on_die():queue_free())
+
 @onready var ray_cast = $RayCast2D
 @onready var player = $"../Player"
+@onready var projectile = "res://Prefabs/Pocisk.tscn"
 
 func _ready() -> void:
 	pass
@@ -25,6 +28,12 @@ func _process(delta: float) -> void:
 			velocity += Vector2(randf_range(-10,10),randf_range(-10,10))
 			
 		State.ATTACK:
-			velocity = Vector2(player.position - position).normalized() * 250
+			velocity = Vector2(player.position - position).normalized() * 300
 	
 	move_and_slide()
+	for i in get_slide_collision_count():
+		if get_slide_collision(i).get_collider() == player:
+			health.deal_damage(1)
+			print(health.health)
+			break
+		
