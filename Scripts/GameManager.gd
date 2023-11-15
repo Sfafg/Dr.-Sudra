@@ -12,9 +12,19 @@ func load_scene(scene_path:String):
 
 
 func _diferred_load_scene(scene_path:String):
+	if not current_scene:
+		current_scene = get_tree().current_scene
+		
 	current_scene.free()
 	
-	current_scene = load(scene_path).instantiate()
-	
-	get_tree().root.add_child(current_scene)
+	get_tree().root.add_child(load(scene_path).instantiate())
+	current_scene = get_tree().root.get_child(get_tree().root.get_child_count() - 1)
 	get_tree().current_scene = current_scene
+
+
+func execute_delayed(time_sec:float, function:Callable, args:Array = []):
+	var f = func wait(): 
+		await get_tree().create_timer(time_sec).timeout
+		function.callv(args)
+	f.call()
+	

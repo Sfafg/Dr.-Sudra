@@ -12,6 +12,7 @@ func move(direction:Vector2):
 	_move_direction = direction.limit_length(max_speed)
 	
 func _physics_process(delta):
+	# Zmień prędkość obiektu tak aby była podobna do kierunku ruchu.
 	var steering_force = (_move_direction - velocity).limit_length(steering)
 	velocity += steering_force
 
