@@ -1,19 +1,22 @@
+class_name Movement
 extends CharacterBody2D
 
-@export var speed = 20.0
-var is_going_right = true
+@export var max_speed = 600.0
+@export var steering = 30.0
 
+var _move_direction:Vector2
+
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
+func move(direction:Vector2):
+	_move_direction = direction.limit_length(max_speed)
+	
 func _physics_process(delta):
-	# Pobieranie wejścia z klawiatury.
-	var move_direction = Input.get_vector("left", "right", "up", "down")
-	
-	# Ustawianie prędkości.
-	velocity = move_direction.normalized() * speed * 100
-	
+	var steering_force = (_move_direction - velocity).limit_length(steering)
+	velocity += steering_force
+
 	move_and_slide()
 	
 	# Skierowanie obiektu w strone ruchu.
-	if velocity.x != 0 and (velocity.x > 0 != is_going_right):
-		is_going_right = velocity.x > 0
-		scale.x = -abs(scale.x)
-			
+	if velocity.x != 0:
+		sprite_2d.flip_h = velocity.x < 0
