@@ -1,6 +1,6 @@
 extends Node
 
-@onready var shoot = $".." as Shooting
+@onready var shoot = $"../Shooting" as Shooter
 @onready var movement = $".." as Movement
 
 func _process(delta: float) -> void:

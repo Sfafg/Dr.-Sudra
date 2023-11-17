@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Movement.gd" id="1_y1wds"]
 [ext_resource type="Texture2D" uid="uid://c6xa4kejlfim8" path="res://PlaceholderArt/zak.png" id="2_lyiqv"]
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="2_teec8"]
-[ext_resource type="Script" path="res://Shoot.gd" id="4_ma7eh"]
+[ext_resource type="Script" path="res://Scripts/Shooter.gd" id="4_7x1v1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5w5tl"]
 size = Vector2(509.804, 380)
@@ -32,4 +32,4 @@ position_smoothing_enabled = true
 position = Vector2(509.804, 0)
 
 [node name="Shooting" type="Node2D" parent="."]
-script = ExtResource("4_ma7eh")
+script = ExtResource("4_7x1v1")
