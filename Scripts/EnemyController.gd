@@ -1,6 +1,5 @@
 extends Node2D
 
-var health = Health.new(100, 100, func on_die():queue_free())
 var state_machine = StateMachine.new({
 	"IDLE": func(): body.move(body.velocity * 0.99 + Vector2(randf_range(-10,10),randf_range(-10,10))),
 	"ATTACK": func(): body.move(Vector2(player.position - body.position).normalized() * 300),
