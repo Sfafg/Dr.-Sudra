@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ci0gnbr5hco5i"]
+[gd_scene load_steps=6 format=3 uid="uid://ci0gnbr5hco5i"]
 
 [ext_resource type="Script" path="res://Scripts/Movement.gd" id="1_y1wds"]
 [ext_resource type="Texture2D" uid="uid://c6xa4kejlfim8" path="res://PlaceholderArt/zak.png" id="2_lyiqv"]
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="2_teec8"]
+[ext_resource type="Script" path="res://Shoot.gd" id="4_ma7eh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5w5tl"]
 size = Vector2(509.804, 380)
@@ -26,3 +27,9 @@ texture = ExtResource("2_lyiqv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(509.804, 0)
+
+[node name="Shooting" type="Node2D" parent="."]
+script = ExtResource("4_ma7eh")
