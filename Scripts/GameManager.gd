@@ -9,9 +9,9 @@ func _ready():
 	
 func load_scene(scene_path:String):
 	call_deferred("_diferred_load_scene", scene_path)
+	
 
-
-func _diferred_load_scene(scene_path:String):
+func _diferred_load_scene(scene_path):
 	if not current_scene:
 		current_scene = get_tree().current_scene
 		

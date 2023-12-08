@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://8v3gpiwe11f6"]
 
 [ext_resource type="Script" path="res://Scripts/Movement.gd" id="2_7vpdo"]
-[ext_resource type="Script" path="res://Scripts/EnemyController.gd" id="2_ccmfl"]
 [ext_resource type="Texture2D" uid="uid://jruposa6bbv3" path="res://PlaceholderArt/banan.png" id="2_mdidg"]
+[ext_resource type="Script" path="res://Scripts/Controllers/EnemyController.gd" id="2_xqp2m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cx4dn"]
 size = Vector2(39.5437, 23.056)
@@ -15,7 +15,7 @@ max_speed = 500.0
 steering = 20.0
 
 [node name="Controller" type="Node2D" parent="."]
-script = ExtResource("2_ccmfl")
+script = ExtResource("2_xqp2m")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(300, 0)

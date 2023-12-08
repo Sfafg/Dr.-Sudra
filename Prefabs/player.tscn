@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Movement.gd" id="1_y1wds"]
 [ext_resource type="Texture2D" uid="uid://c6xa4kejlfim8" path="res://PlaceholderArt/zak.png" id="2_lyiqv"]
-[ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="2_teec8"]
+[ext_resource type="Script" path="res://Scripts/Controllers/PlayerController.gd" id="2_xxmaa"]
 [ext_resource type="Script" path="res://Scripts/Shooter.gd" id="4_7x1v1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5w5tl"]
@@ -15,7 +15,7 @@ script = ExtResource("1_y1wds")
 steering = 600.0
 
 [node name="Controller" type="Node2D" parent="."]
-script = ExtResource("2_teec8")
+script = ExtResource("2_xxmaa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(39.2157, 0)

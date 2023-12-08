@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwnho0mmndyla"]
+[gd_scene load_steps=4 format=3 uid="uid://dwnho0mmndyla"]
 
 [ext_resource type="Texture2D" uid="uid://cvynghctfin4n" path="res://PlaceholderArt/kula.png" id="1_opi5c"]
+[ext_resource type="Script" path="res://Scripts/SceneEnterTransition.gd" id="2_kk5vg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_75ruo"]
 radius = 7.0
@@ -15,3 +16,5 @@ texture = ExtResource("1_opi5c")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.9, 0.9)
 shape = SubResource("CircleShape2D_75ruo")
+script = ExtResource("2_kk5vg")
+scene_path = "\"res://Scenes/TestScene.tscn\""
